@@ -3,7 +3,6 @@
 ## 1° Ler o datasheet do 579-PIC16F1769-I/SS
 ### Ver os componentes que tenho que colocar ao redor do chip
 - [ ] Anotações
-- P
 - Pinagem na pg(4)
 - Applications: Switch-mode power supplies (DC-to-DC/AC-to-DC)
 - Tensão de alimentação - 2.5 V to 5.5 V
@@ -18,7 +17,7 @@
 
 - [ ] Links
 - site do fabricante: https://br.mouser.com/ProductDetail/Microchip-Technology/PIC16F1769-I-SS?qs=4f%252Bx0JRcgJZxCFgtF0sYlg%3D%3D&srsltid=AfmBOooehqHrvz6JPwbJgqptTAqiJM8v0NAbV50qgQvy_N7ubH63BWmr
-- datasheet: https://br.mouser.com/datasheet/2/268/PIC16(L)F1764-5-8-9-14-20-Pin-8-Bit-Flash-MCU-4000-1314189.pdf
+- datasheet: https://br.mouser.com/datasheet/2/268/PIC16(L)F1764-5-8-9-14-20-Pin-8-Bit-Flash-MCU-4000-1314189.pdf (obs: esse daqui não possui typical circuit)
   
 ## 2° Ler o datasheet do microship pickit 5
 ### Ver os conectores que tenho que colocar no debugger + os sinais que ele emite
