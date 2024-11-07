@@ -12,26 +12,23 @@ O que fazer:
 
 ### Anotações do que achei na pg(462)
 #### Five pins are needed for ICSP™ programming:
+- obs: (rafael) eu falei com o renan e realmente, é nessa pagina que esta os pinos de conecção para o pickit, alias ele me passou um desenho bem como um esquematico sobre o que mais ou menos ele esta desejando para ser feito deixei anotações sobre isso nos links
 - ICSPCLK
 - ICSPDAT
 - MCLR/VPP
 - VDD
 - VSS
 
-### Anotaçõesque achei no datasheet do pickit 5
-- o pickit possue 8 pinos conectores: TVPP, TVDD, GND, PGD, PGC, TAUX, TTDI, e TTMS
-- 
-
-
-
 - [ ] Links
       
 - site do fabricante: https://br.mouser.com/ProductDetail/Microchip-Technology/PIC16F1769-I-SS?qs=4f%252Bx0JRcgJZxCFgtF0sYlg%3D%3D&srsltid=AfmBOooehqHrvz6JPwbJgqptTAqiJM8v0NAbV50qgQvy_N7ubH63BWmr
   
 - datasheet: https://br.mouser.com/datasheet/2/268/PIC16(L)F1764-5-8-9-14-20-Pin-8-Bit-Flash-MCU-4000-1314189.pdf (obs: esse daqui não possui typical circuit) / professor falou que
-na parte da conecção com o debugger aparece o esquematico, acho que é o da pg(462)
+na parte da conecção com o debugger aparece o esquematico, acho que é o da pg(462), é literalmente o mesmo chip, mesma estrutura
 
 - “ For more information on ICSP™ refer to the 'PIC16(L)F170X Memory Programming Specification'”: https://ww1.microchip.com/downloads/en/DeviceDoc/40001683B.pdf
+
+- artigo que o professor passou em que mostra um circuito que exemplifica o que ele quer, se encontra dentre os circuitos da pg(19) (é o circuito conectado ao chip u4 do lado do led d2 green que alias o professor pediu para adicionar tambem para ver se a placa esta ou não ligada): https://ww1.microchip.com/downloads/en/DeviceDoc/Curiosity-Low-Pin-Count-Development-Board-Users-Guide-40001804D.pdf
   
 ## 2° Ler o datasheet do microship pickit 5
 ### Ver os conectores que tenho que colocar no gravador/depurador + os sinais que ele emite
