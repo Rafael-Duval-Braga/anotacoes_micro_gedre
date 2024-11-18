@@ -46,9 +46,9 @@ na parte da conecção com o debugger aparece o esquematico, acho que é o da pg
 - <https://rafael-braga.365.altium.com/designs/48A20566-C84B-444C-935F-0ABE2ABFE986#design>
 
 ## Obs:
--O circuito do micro deve ser padronizado para os outros bucks
--[ ] ver como vai ser os outros bucks
-      -[ ] ver quais componentes são controlados pelo micro 
+- O circuito do micro deve ser padronizado para os outros bucks
+- [ ] ver como vai ser os outros bucks
+      - [ ] ver quais componentes são controlados pelo micro 
 
 
 
