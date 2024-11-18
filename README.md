@@ -49,6 +49,7 @@ na parte da conecção com o debugger aparece o esquematico, acho que é o da pg
 - O circuito do micro deve ser padronizado para os outros bucks
 - [ ] ver como vai ser os outros bucks
 - [ ] ver quais componentes são controlados pelo micro 
+- [ ] ver se há placas com funcionalidades semelhantes ao que busco com o micro
 
 ## todo
 
