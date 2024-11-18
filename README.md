@@ -50,6 +50,11 @@ na parte da conecção com o debugger aparece o esquematico, acho que é o da pg
 - [ ] ver como vai ser os outros bucks
 - [ ] ver quais componentes são controlados pelo micro 
 
+## todo
+
+- [ ] achar uma biblioteca para colocar no altium, para fazer o circuito (achado na página 19)
+
+
 
 
 
