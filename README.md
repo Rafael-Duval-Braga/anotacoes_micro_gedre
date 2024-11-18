@@ -47,8 +47,8 @@ na parte da conecção com o debugger aparece o esquematico, acho que é o da pg
 
 ## Obs:
 -O circuito do micro deve ser padronizado para os outros bucks
--[] ver como vai ser os outros bucks
-      -[] ver quais componentes são controlados pelo micro 
+-[ ] ver como vai ser os outros bucks
+      -[ ] ver quais componentes são controlados pelo micro 
 
 
 
