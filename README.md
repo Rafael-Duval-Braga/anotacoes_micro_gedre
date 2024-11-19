@@ -12,7 +12,7 @@ O que fazer:
 
 ### Anotações do que achei na pg(462)
 #### Five pins are needed for ICSP™ programming:
-- obs: (rafael) eu falei com o renan e realmente, é nessa pagina que esta os pinos de conecção para o pickit, alias ele me passou um desenho bem como um esquematico sobre o que mais ou menos ele esta desejando para ser feito deixei anotações sobre isso nos links
+- obs: eu falei com o renan e realmente, é nessa pagina que esta os pinos de conecção para o pickit, alias ele me passou um desenho bem como um esquematico sobre o que mais ou menos ele esta desejando para ser feito deixei anotações sobre isso nos links
 - ICSPCLK
 - ICSPDAT
 - MCLR/VPP
