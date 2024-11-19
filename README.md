@@ -53,7 +53,7 @@ na parte da conecção com o debugger aparece o esquematico, acho que é o da pg
 
 ## todo
 
-- [ ] comparar o chip u4 da página 19 do 4° link com o chip PIC16f1769
+- [ ] comparar o chip u4 da página 19 do 4° link (o PIC16F18446) com o chip PIC16f1769
 - [ ] escolher os componentes para o circuito 
 - [ ] achar uma biblioteca para colocar no altium, para fazer o circuito (achado na página 19 do 4° link)
 
