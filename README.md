@@ -43,7 +43,7 @@ na parte da conecção com o debugger aparece o esquematico, acho que é o da pg
 - "How To Read A Datasheet - Phil's Lab #123": <https://youtu.be/1EXXqWweTkI?si=hWDz0JQ2FpIgRCck>
 
 ## Link do atlium 365:
-- <https://rafael-braga.365.altium.com/designs/48A20566-C84B-444C-935F-0ABE2ABFE986#design>
+- <https://rafael-braga.365.altium.com/designs/D490ACA9-A712-4FE8-9F94-6172F4BF13D2#design>
 
 ## Obs:
 - O circuito do micro deve ser padronizado para os outros bucks
