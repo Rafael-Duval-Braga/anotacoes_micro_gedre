@@ -45,6 +45,8 @@ na parte da conecção com o debugger aparece o esquematico, acho que é o da pg
 
 ## Link do atlium 365:
 - <https://rafael-braga.365.altium.com/designs/D490ACA9-A712-4FE8-9F94-6172F4BF13D2#design>
+## Link do easy eda:
+- <https://easyeda.com/editor#id=a2d0c3f24be84ffcb68d1d5a96755303|070f6bd9a66b46cd97a30692144fba46>
 
 ## Obs:
 - O circuito do micro deve ser padronizado para os outros bucks
