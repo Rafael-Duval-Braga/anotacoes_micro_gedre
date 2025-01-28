@@ -47,6 +47,7 @@ na parte da conecção com o debugger aparece o esquematico, acho que é o da pg
 
 ## Obs:
 - O circuito do micro deve ser padronizado para os outros bucks
+- [ ] ver qual pino do chip envia o sinal PWM (na pagina 253 do datasheet aparece as configurações do PWM)
 - [ ] ver como vão ser os outros bucks
 - [ ] ver quais componentes são controlados pelo micro 
 - [ ] ver se há placas com funcionalidades semelhantes ao que busco com o micro
@@ -56,11 +57,11 @@ na parte da conecção com o debugger aparece o esquematico, acho que é o da pg
 - [x] comparar o chip u4 (PIC16F18446-I/SO) da página 19 do 4° link com o chip PIC16f1769
       - eu comparei com a pinagem nesses dois links <https://br.mouser.com/ProductDetail/Microchip-Technology/PIC16F18446-I-SO?qs=rrS6PyfT74fKS3ku0yMz%252Bg%3D%3D&utm_id=12168397652&gad_source=1&gclid=EAIaIQobChMI75KrvvzoiQMVF9cWBR1C4xHSEAAYAyAAEgI14PD_BwE> & <https://br.mouser.com/ProductDetail/Microchip-Technology/PIC16F1769-I-SS?qs=4f%252Bx0JRcgJZxCFgtF0sYlg%3D%3D&srsltid=AfmBOorJ7OEVpVLfdzuGaZaQELkCJcCpsSGb6BPpS4Pniy5SPgeyJCLt>
 - [x] achar uma biblioteca para colocar no altium, para fazer o circuito (achado na página 19 do 4° link). Tem o micro que vamos usar (PIC16F1769-I/SS) (ir em panels/ manufactured part search/ pesquisar "PIC16F1769" na barra de pesquisa dai acha o micro
-- [ ] colocar os pinos (jumpers) (pin header) j9 & j11
-- [ ] colocar o led que indica que ta ligado
-- [ ] colocar o capacitor
-- [ ] colocar os resistores
-- [ ] escolher o modelo dos componentes acima
+- [x] colocar os pinos (jumpers) (pin header) j9 & j11
+- [x] colocar o led que indica que ta ligado
+- [x] colocar o capacitor
+- [x] colocar os resistores
+
       
 
 
