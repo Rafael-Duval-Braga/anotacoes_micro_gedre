@@ -18,6 +18,7 @@ O que fazer:
 - MCLR/VPP
 - VDD
 - VSS
+- pino para o sinal PWM (procurar)
 
 - [ ] Links
       
@@ -49,8 +50,8 @@ na parte da conecção com o debugger aparece o esquematico, acho que é o da pg
 - O circuito do micro deve ser padronizado para os outros bucks
 - [ ] ver qual pino do chip envia o sinal PWM (na pagina 253 do datasheet aparece as configurações do PWM)
 - [ ] ver como vão ser os outros bucks
-- [ ] ver quais componentes são controlados pelo micro 
-- [ ] ver se há placas com funcionalidades semelhantes ao que busco com o micro
+- [x] ver quais componentes são controlados pelo micro 
+- [x] ver se há placas com funcionalidades semelhantes ao que busco com o micro
 
 ## todo
 
