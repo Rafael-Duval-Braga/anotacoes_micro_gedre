@@ -34,9 +34,18 @@ na parte da conecção com o debugger aparece o esquematico, acho que é o da pg
 ## 2° Ler o datasheet do microship pickit 5
 ### Ver os conectores que tenho que colocar no gravador/depurador + os sinais que ele emite
 - [ ] Anotações
+
+- todo
+- [ ] colocar o arquivo com os codigos
+- [ ] testar na placa
+
 - [ ] Links
 - site do fabricante: <https://www.microchip.com/en-us/development-tool/PG164150>
 - datasheet: <https://ww1.microchip.com/downloads/aemDocuments/documents/DEV/ProductDocuments/UserGuides/MPLAB-PICkit-5-In-Circuit-Debugger-Users-Guide-50003525.pdf#page=13&zoom=100,0,253>
+- Aula 003 - Criando e compilando projetos com o MPLAB X e o compilador XC8: <https://www.youtube.com/watch?v=KUDuht_tzDg>
+
+
+
 
 ## links extras:
 - "From Idea to Schematic to PCB - <How to do it easily!": https://youtu.be/35YuILUlfGs?si=2a0s9VaXoEdnJa0E>
@@ -50,7 +59,7 @@ na parte da conecção com o debugger aparece o esquematico, acho que é o da pg
 
 ## Obs:
 - O circuito do micro deve ser padronizado para os outros bucks
-- [ ] ver qual pino do chip envia o sinal PWM (na pagina 253 do datasheet aparece as configurações do PWM)
+- [x] ver qual pino do chip envia o sinal PWM (na pagina 253 do datasheet aparece as configurações do PWM)
 - [ ] ver como vão ser os outros bucks
 - [x] ver quais componentes são controlados pelo micro 
 - [x] ver se há placas com funcionalidades semelhantes ao que busco com o micro
