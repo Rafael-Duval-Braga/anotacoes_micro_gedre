@@ -44,6 +44,7 @@ na parte da conecção com o debugger aparece o esquematico, acho que é o da pg
 - datasheet: <https://ww1.microchip.com/downloads/aemDocuments/documents/DEV/ProductDocuments/UserGuides/MPLAB-PICkit-5-In-Circuit-Debugger-Users-Guide-50003525.pdf#page=13&zoom=100,0,253>
 - Aula 003 - Criando e compilando projetos com o MPLAB X e o compilador XC8: <https://www.youtube.com/watch?v=KUDuht_tzDg>
 - Como criar um novo projeto no MPLAB X | PIC #04: <https://youtu.be/g0kYKjXIjD0?si=mNOoakweSEjs0gsK>
+- Getting Started with PICKit 5 - Setting Up Your First Project: <https://youtu.be/AZxia-ey7Dw?si=GqMDZY75jTHdKAm3>
 
 
 
