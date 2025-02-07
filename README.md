@@ -18,7 +18,7 @@ O que fazer:
 - MCLR/VPP
 - VDD
 - VSS
-- pino para o sinal PWM (procurar)
+- pino para o sinal PWM 
 
 - [ ] Links
       
