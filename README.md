@@ -35,7 +35,7 @@ na parte da conecção com o debugger aparece o esquematico, acho que é o da pg
 ### Ver os conectores que tenho que colocar no gravador/depurador + os sinais que ele emite
 - [ ] Anotações
 
-- todo
+## TODO
 - [ ] ler o manual do pic-16f628A
 - site do fabricante: <https://www.microchip.com/en-us/product/pic16f628a>
 - datasheet: <https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/DataSheets/40044G.pdf>
