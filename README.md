@@ -39,7 +39,7 @@ na parte da conecção com o debugger aparece o esquematico, acho que é o da pg
 - [ ] ler o manual do pic-16f628A
 - site do fabricante <https://www.microchip.com/en-us/product/pic16f628a>
 - datasheet <https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/DataSheets/40044G.pdf>
-- obs: acho q na pag 114 monstra os pinos p/ programar
+- obs: acho que na pag 114 monstra os pinos p/ programar. 99% de certeza ao comparar a pag 114 desse manual com a pag 463 do pic-16F1769.
 - [ ] montar o chip na protoboard
 - [ ] conectar o pikit 5 na protoboard
 - [ ] aprender como usar o mplab x ide
