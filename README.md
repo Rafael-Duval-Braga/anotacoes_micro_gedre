@@ -44,7 +44,7 @@ na parte da conecção com o debugger aparece o esquematico, acho que é o da pg
 - [ ] montar o chip na protoboard
 - [ ] conectar o pikit 5 na protoboard
 - [ ] aprender como usar o mplab x ide
-- Blinky and Running LEDs 🔴 PIC Microcontroller Programming Tutorial #3 MPLAB in C: <https://youtu.be/OBNpr4BSHA8?feature=shared>
+- PIC Programming Tutorials using C and MPLABX with the XC8 compiler. <https://youtube.com/playlist?list=PLtuqBdbsL-DtSo1a9pS4sLkoaU3Or2pl3&feature=shared>
 - [ ] montar a placa do pic-16f1769
 - [ ] testar na placa
       
