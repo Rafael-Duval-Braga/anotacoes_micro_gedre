@@ -41,8 +41,9 @@ na parte da conecção com o debugger aparece o esquematico, acho que é o da pg
 - datasheet: <https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/DataSheets/40044G.pdf>
 - obs: acho que na pag 114 monstra os pinos p/ programar. 99% de certeza ao comparar a pag 114 desse manual com a pag 463 do pic-16F1769
 - obs 2: conferir se tem oscilador interno, se sim como ativa-lo pelo mplab x ide. acho que na pag 145 mostra algo sobre
-- nesse manual acho que mostra como ver o oscilador interno na pag 63 <https://ww1.microchip.com/downloads/en/devicedoc/50002053g.pdf>
-- conferir quanto de tensão colocar no gnd & vcc
+- acho que nesse manual acho que mostra como ver o oscilador interno na pag 63 <https://ww1.microchip.com/downloads/en/devicedoc/50002053g.pdf>
+- acho que nesse forum fala como ativar o oscilador interno no XC8 <https://forum.microchip.com/s/topic/a5C3l000000MRrCEAW/t337142>
+- obs 3: conferir quanto de tensão colocar no vcc. R: 5V de entrada
 - [ ] montar o chip na protoboard
 - [ ] conectar o pikit 5 na protoboard
 - [ ] aprender como usar o mplab x ide
