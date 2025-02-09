@@ -79,7 +79,7 @@ na parte da conecção com o debugger aparece o esquematico, acho que é o da pg
 - [x] ver quais componentes são controlados pelo micro 
 - [x] ver se há placas com funcionalidades semelhantes ao que busco com o micro
 
-## todo
+## TODO
 
 - [x] comparar o chip u4 (PIC16F18446-I/SO) da página 19 do 4° link com o chip PIC16f1769
       - eu comparei com a pinagem nesses dois links <https://br.mouser.com/ProductDetail/Microchip-Technology/PIC16F18446-I-SO?qs=rrS6PyfT74fKS3ku0yMz%252Bg%3D%3D&utm_id=12168397652&gad_source=1&gclid=EAIaIQobChMI75KrvvzoiQMVF9cWBR1C4xHSEAAYAyAAEgI14PD_BwE> & <https://br.mouser.com/ProductDetail/Microchip-Technology/PIC16F1769-I-SS?qs=4f%252Bx0JRcgJZxCFgtF0sYlg%3D%3D&srsltid=AfmBOorJ7OEVpVLfdzuGaZaQELkCJcCpsSGb6BPpS4Pniy5SPgeyJCLt>
