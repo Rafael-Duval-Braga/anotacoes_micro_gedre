@@ -20,7 +20,8 @@
 
 void main(void) {
     // **CONFIGURAÇÃO INICIAL**
-    
+
+    //ESSAS DUAS LINHAS SÃO AS UNICAS DIFERENCAS DO MEU CODIGO COM ESSE OUTRO
     CMCON = 0x07;               // Desativa os comparadores analógicos
     OPTION_REGbits.nRBPU = 0;   // Ativa pull-ups internos (se necessário)
     
@@ -49,7 +50,7 @@ void main(void) {
 /**codigo nao funcional 
 
 // CONFIG
-#pragma config FOSC = XT        // Oscillator Selection bits (XT oscillator: Crystal/resonator on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN)
+#pragma config FOSC = HS        // Oscilador High-Speed para cristal de 16MHz
 #pragma config WDTE = OFF       // Watchdog Timer Enable bit (WDT disabled)
 #pragma config PWRTE = ON       // Power-up Timer Enable bit (PWRT enabled)
 #pragma config MCLRE = ON       // RA5/MCLR/VPP Pin Function Select bit (RA5/MCLR/VPP pin function is MCLR)
@@ -77,25 +78,25 @@ void main(void) {
     //eu uso TRISA/Bbits.TRISA/Bnumero_do_pino = 0/1
     //ou só TRISA/Bnumero_do_bit
     
-    TRISBbits.TRISB6 = 0;               //direciona o pino 6 da porta b como saida 
+    TRISBbits.TRISB5 = 0;               //direciona o pino 6 da porta b como saida 
     
     //PORTA/B.R_A/B_numero_da_porta = 0/... atribui nivel logico 0/... ao pino numero_da_porta da porta A/B
     
-    PORTBbits.RB6 = 0;                  //atribui o nivel logico 0 (0V) ao pino 6 da porta B
+    PORTBbits.RB5 = 0;                  //atribui o nivel logico 0 (0V) ao pino 6 da porta B
     
     //Ou seja, port serve para atribuir nivel logico, e tris serve para direcionar tal pino como entrada e saída      
     
     
     while(1){
     
-        PORTBbits.RB6 = 1;              //atribui o nivel logico 0 ao pino 6 da porta B
+        PORTBbits.RB5 = 1;              //atribui o nivel logico 0 ao pino 6 da porta B
     
         //__delay_ms(tempo); é o comando de delay, o quanto tempo dura o comando
         
         __delay_ms(3000);               //gera atraso de 3 seg
         
         
-        PORTBbits.RB6 = 0;              //atribui o nivel logico 1 (5V) ao pino 6 da porta B
+        PORTBbits.RB5 = 0;              //atribui o nivel logico 1 (5V) ao pino 6 da porta B
     
         //__delay_ms(tempo); é o comando de delay, o quanto tempo dura o comando
         
