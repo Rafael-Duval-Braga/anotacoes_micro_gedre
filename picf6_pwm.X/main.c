@@ -1,9 +1,52 @@
 
 
-//testar
-// CONFIG
+
+// codigo funcional
+// obs ver por que funciona
+// CONFIGURAÇÃO DO MICROCONTROLADOR PIC16F628A
+
+#pragma config FOSC = HS        // Oscilador High-Speed para cristal de 16MHz
+#pragma config WDTE = OFF       // Watchdog Timer desativado
+#pragma config PWRTE = ON       // Power-up Timer ativado
+#pragma config MCLRE = ON       // MCLR ativado (RA5 funcionando como Reset)
+#pragma config BOREN = ON       // Brown-out Reset ativado
+#pragma config LVP = OFF        // Low-Voltage Programming desativado
+#pragma config CPD = OFF        // Proteção da memória EEPROM desativada
+#pragma config CP = OFF         // Proteção da memória Flash desativada
+
+#include <xc.h>
+
+#define _XTAL_FREQ 16000000UL  // Define a frequência do clock para 16MHz
+
+void main(void) {
+    // **CONFIGURAÇÃO INICIAL**
+    
+    CMCON = 0x07;               // Desativa os comparadores analógicos
+    OPTION_REGbits.nRBPU = 0;   // Ativa pull-ups internos (se necessário)
+    
+    TRISBbits.TRISB5 = 0;       // Configura RB5 como saída
+    PORTBbits.RB5 = 0;          // Inicializa RB5 em nível baixo
+    
+    // **LOOP DE TESTE INICIAL** (Pisca 3 vezes para indicar que o código está rodando)
+    for (int i = 0; i < 3; i++) {
+        PORTBbits.RB5 = 1;
+        __delay_ms(500);
+        PORTBbits.RB5 = 0;
+        __delay_ms(500);
+    }
+    
+    // **LOOP PRINCIPAL**
+    while (1) {
+        PORTBbits.RB5 = 1;      // Seta RB5 em nível alto (5V)
+        __delay_ms(3000);       // Atraso de 3 segundos
+        
+        PORTBbits.RB5 = 0;      // Seta RB5 em nível baixo (0V)
+        __delay_ms(3000);       // Atraso de 3 segundos
+    }
+}
 
 
+/**codigo nao funcional 
 
 // CONFIG
 #pragma config FOSC = XT        // Oscillator Selection bits (XT oscillator: Crystal/resonator on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN)
@@ -32,7 +75,7 @@ void main(void) {
     
     //para especificar qual porta dos conjuntos de pinos a e b eu quero usar
     //eu uso TRISA/Bbits.TRISA/Bnumero_do_pino = 0/1
-    //ou s� TRISA/Bnumero_do_bit
+    //ou só TRISA/Bnumero_do_bit
     
     TRISBbits.TRISB6 = 0;               //direciona o pino 6 da porta b como saida 
     
@@ -40,28 +83,28 @@ void main(void) {
     
     PORTBbits.RB6 = 0;                  //atribui o nivel logico 0 (0V) ao pino 6 da porta B
     
-    //Ou seja, port serve para atribuir nivel logico, e tris serve para direcionar tal pino como entrada e sa�da      
+    //Ou seja, port serve para atribuir nivel logico, e tris serve para direcionar tal pino como entrada e saída      
     
     
     while(1){
     
         PORTBbits.RB6 = 1;              //atribui o nivel logico 0 ao pino 6 da porta B
     
-        //__delay_ms(tempo); � o comando de delay, o quanto tempo dura o comando
+        //__delay_ms(tempo); é o comando de delay, o quanto tempo dura o comando
         
         __delay_ms(3000);               //gera atraso de 3 seg
         
         
         PORTBbits.RB6 = 0;              //atribui o nivel logico 1 (5V) ao pino 6 da porta B
     
-        //__delay_ms(tempo); � o comando de delay, o quanto tempo dura o comando
+        //__delay_ms(tempo); é o comando de delay, o quanto tempo dura o comando
         
         __delay_ms(3000);               //gera atraso de 3 seg
                        
     }
     
 }
-
+**/
 
 
 
