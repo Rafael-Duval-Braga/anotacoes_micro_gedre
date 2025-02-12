@@ -43,7 +43,8 @@ na parte da conecção com o debugger aparece o esquematico, acho que é o da pg
 - obs 3: conferir quanto de tensão colocar no vcc. R: 5V de entrada
 - [x] montar o chip na protoboard
 - [x] conectar o pikit 5 na protoboard
-- [x] aprender como usar o mplab x ide
+- [ ] aprender como usar o mplab x ide
+- [ ] ver noracao em c para mplab x ide
 - PIC Programming Tutorials using C and MPLABX with the XC8 compiler. <https://youtube.com/playlist?list=PLtuqBdbsL-DtSo1a9pS4sLkoaU3Or2pl3&feature=shared>
 - [ ] testar na placa
       
