@@ -1,8 +1,24 @@
 
+//codigo com o tempo setado conferir
+void main(void) {
+    
+    CMCON = 0x07;  // Desativa os comparadores analógicos
+    
+    TRISBbits.TRISB5 = 0;  // Define RB5 como saída
+    PORTBbits.RB5 = 0;  // Inicializa RB5 em nível baixo
+    
+    while(1) {
+        PORTBbits.RB5 = 1;  // Ativa saída (nível alto)
+        __delay_us(2.927);  // Tempo de ON
+
+        PORTBbits.RB5 = 0;  // Desativa saída (nível baixo)
+        __delay_us(9.025);  // Tempo de OFF
+    }
+}
 
 
 // codigo funcional
-// obs ver por que funciona
+// obs ver por que funciona feito
 // CONFIGURAÇÃO DO MICROCONTROLADOR PIC16F628A
 
 #pragma config FOSC = HS        // Oscilador High-Speed para cristal de 16MHz
