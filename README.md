@@ -47,6 +47,7 @@ na parte da conecção com o debugger aparece o esquematico, acho que é o da pg
 - [x] aprender a notacao do mplab xc8 compiler
 - PIC Programming Tutorials using C and MPLABX with the XC8 compiler. <https://youtube.com/playlist?list=PLtuqBdbsL-DtSo1a9pS4sLkoaU3Or2pl3&feature=shared>
 - [x] aplicar o sinal pwm no chip
+- [x] Montar a placa com o pic16f1769 i/ss
 - [ ] testar na placa com o pic16f1769 i/ss
       
 
