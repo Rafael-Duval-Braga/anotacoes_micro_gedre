@@ -48,7 +48,11 @@ na parte da conecção com o debugger aparece o esquematico, acho que é o da pg
 - PIC Programming Tutorials using C and MPLABX with the XC8 compiler. <https://youtube.com/playlist?list=PLtuqBdbsL-DtSo1a9pS4sLkoaU3Or2pl3&feature=shared>
 - [x] aplicar o sinal pwm no chip
 - [x] Montar a placa com o pic16f1769 i/ss
-- [ ] testar na placa com o pic16f1769 i/ss
+- [x] testar na placa com o pic16f1769 i/ss
+- [ ] conectar com o cabo F-F o micro & o amplificador
+- [ ] passar o micro+amp pro Kalyl testar com o buck DCM
+- [ ] confirmar o funcionamento do micro+amp
+- [ ] fazer os microcontroladores para os bucks CCM & CrCM
       
 
 - [ ] Links
@@ -74,7 +78,7 @@ na parte da conecção com o debugger aparece o esquematico, acho que é o da pg
 ## Obs:
 - O circuito do micro deve ser padronizado para os outros bucks
 - [x] ver qual pino do chip envia o sinal PWM (na pagina 253 do datasheet aparece as configurações do PWM)
-- [ ] ver como vão ser os outros bucks
+- [ ] ver como vão ser os outros bucks, pegar o equacionamento do periodo on e off
 - [x] ver quais componentes são controlados pelo micro 
 - [x] ver se há placas com funcionalidades semelhantes ao que busco com o micro
 
