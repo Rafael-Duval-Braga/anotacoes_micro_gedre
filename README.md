@@ -49,7 +49,8 @@ na parte da conecção com o debugger aparece o esquematico, acho que é o da pg
 - [x] aplicar o sinal pwm no chip
 - [x] Montar a placa com o pic16f1769 i/ss
 - [x] testar na placa com o pic16f1769 i/ss
-- [ ] conectar com o cabo F-F o micro & o amplificador
+- [ ] instalar um potenciometro que controla a frequencia do led (a largura do sinal PWM)
+- [x] conectar com o cabo F-F o micro & o amplificador
 - [ ] passar o micro+amp pro Kalyl testar com o buck DCM
 - [ ] confirmar o funcionamento do micro+amp
 - [ ] fazer os microcontroladores para os bucks CCM & CrCM
