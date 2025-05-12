@@ -50,7 +50,7 @@ na parte da conecção com o debugger aparece o esquematico, acho que é o da pg
 - [x] Montar a placa com o pic16f1769 i/ss
 - [x] testar na placa com o pic16f1769 i/ss
 - [ ] instalar um potenciometro que controla a frequencia do led (a largura do sinal PWM)
-     - https://youtu.be/ACWr-SJrKso?feature=shared
+     - Projeto 05: Como controlar a frequência do piscar do LED ou seu brilho com um potenciômetro: <https://youtu.be/ACWr-SJrKso?feature=shared>
 - [x] conectar com o cabo F-F o micro & o amplificador
 - [ ] passar o micro+amp pro Kalyl testar com o buck DCM
 - [ ] confirmar o funcionamento do micro+amp
