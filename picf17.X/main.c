@@ -126,4 +126,80 @@ void main(void) {
         software_delay(delay_time);
     }
 }
+
+
+//testar este outro codigo:
+// Arquivo: main.c
+// Autor: Adaptado por ChatGPT para mapeamento de delay entre 4ms e 2ms
+
+#pragma config FOSC = INTOSC    
+#pragma config WDTE = OFF       
+#pragma config PWRTE = ON       
+#pragma config MCLRE = ON       
+#pragma config CP = OFF         
+#pragma config BOREN = OFF      
+#pragma config CLKOUTEN = OFF   
+#pragma config IESO = ON        
+#pragma config FCMEN = ON       
+
+// CONFIG2
+#pragma config WRT = OFF
+#pragma config PPS1WAY = ON
+#pragma config ZCD = OFF
+#pragma config PLLEN = ON       
+#pragma config STVREN = ON
+#pragma config BORV = LO
+#pragma config LPBOR = OFF
+#pragma config DEBUG = OFF
+#pragma config LVP = OFF        
+
+#include <xc.h>
+#include <stdint.h>
+
+#define _XTAL_FREQ 16000000UL   // Oscilador interno com PLL ativado (16 MHz)
+
+void ADC_Init(void) {
+    ANSELA = 0x01;      // RA0 como entrada analógica
+    TRISAbits.TRISA0 = 1; // RA0 como entrada digital
+    ADCON0 = 0x01;      // Habilita ADC, seleciona canal AN0
+    ADCON1 = 0x30;      // Justificado à direita, Vref = Vdd/Vss
+}
+
+uint16_t ADC_Read(void) {
+    __delay_us(5);          // Tempo de aquisição
+    ADCON0bits.GO = 1;      // Inicia conversão
+    while (ADCON0bits.GO);  // Aguarda fim
+    return ((ADRESH << 8) + ADRESL);
+}
+
+// Gera um delay em microssegundos usando __delay_us
+void delay_us(uint16_t us) {
+    while (us--) {
+        __delay_us(1);
+    }
+}
+
+void main(void) {
+    TRISCbits.TRISC4 = 0;  // RC4 como saída
+    LATCbits.LATC4 = 0;    // Inicialmente desligado
+
+    ADC_Init();  // Inicializa ADC
+
+    while (1) {
+        uint16_t adc_value = ADC_Read();  // Lê valor do potenciômetro RA0
+
+        // Mapeia adc_value (0–1023) para delay entre 4000us e 2000us
+        // tempo = 4000 - (adc_value * 2000 / 1023)
+        uint16_t period_us = 4000 - ((uint32_t)adc_value * 2000 / 1023);
+        uint16_t half_period = period_us / 2;
+
+        // Pisca LED com o período ajustado
+        LATCbits.LATC4 = 1;
+        delay_us(half_period);
+
+        LATCbits.LATC4 = 0;
+        delay_us(half_period);
+    }
+}
+
 **/
