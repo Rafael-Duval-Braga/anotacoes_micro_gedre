@@ -94,7 +94,10 @@ na parte da conecção com o debugger aparece o esquematico, acho que é o da pg
 - [x] colocar o capacitor
 - [x] colocar os resistores
 
-      
+- [x] fazer um bom conversor ad
+- links:<https://youtu.be/Zx-p7BscHK8?feature=shared>
+         <https://www.youtube.com/playlist?list=PLW6De-P8jCuh5aK5ybeJuZHn6_gc9oLhH>
+            <//https://www.youtube.com/playlist?list=PLW6De-P8jCuh5aK5ybeJuZHn6_gc9oLhH>
 
 
 
