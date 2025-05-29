@@ -202,4 +202,90 @@ void main(void) {
 }
 
 
-**/
+
+//arrumar isso:
+
+#pragma config FOSC = INTOSC    // Oscilador interno
+#pragma config WDTE = OFF       // Watchdog Timer desativado
+#pragma config PWRTE = ON       // Power-up Timer habilitado
+#pragma config MCLRE = ON       // MCLR habilitado (necessário para ICSP)
+#pragma config CP = OFF         // Proteção de código desabilitada
+#pragma config BOREN = OFF      // Brown-out Reset desativado
+#pragma config CLKOUTEN = OFF   // CLKOUT desabilitado
+#pragma config IESO = ON        // Troca automática entre osciladores
+#pragma config FCMEN = ON       // Fail-safe clock monitor
+
+// CONFIG2
+#pragma config WRT = OFF
+#pragma config PPS1WAY = ON
+#pragma config ZCD = OFF
+#pragma config PLLEN = ON       // PLL ativado (pode ou não estar efetivamente atuando)
+#pragma config STVREN = ON
+#pragma config BORV = LO
+#pragma config LPBOR = OFF
+#pragma config DEBUG = OFF
+#pragma config LVP = OFF        // Programação por alta tensão (MCLR habilitado)    
+
+#include <xc.h>
+#include <stdint.h>
+
+#define _XTAL_FREQ 16000000UL   // Oscilador interno com PLL ativado (16 MHz)
+
+int adc_value = 0; //  0?1023
+
+
+
+void main(void) {
+    //TRISCbits.TRISC4 = 0;  // RC4 como saída
+    //LATCbits.LATC4 = 0;
+
+    
+    TRISA = 0b11111111; //definindo o pino a0 como entrada
+    
+    ADCON0bits.CHS = 0b0000; //canal AN0 
+    ADCON0bits.ADON = 1; // ativar o conversor ADC
+    
+    ADCON1bits.ADNREF = 000 //configurando tensao de referencia
+    ADCON1.ADFM = 1;       //bit mais significativo na direita 
+    ADCON1.ADCS = 0b010 // ADC Conversion Clock Select bits FOSC/32
+    
+            //ver esses links
+            //https://youtu.be/Zx-p7BscHK8?feature=shared
+            //https://www.youtube.com/playlist?list=PLW6De-P8jCuh5aK5ybeJuZHn6_gc9oLhH
+            //https://www.youtube.com/playlist?list=PLW6De-P8jCuh5aK5ybeJuZHn6_gc9oLhH
+    while(1) {
+        
+        ADCON0bits.GO = 1; //entra em conversao
+        
+        while(ADCON0bits.GO){ //aguarda processo de conversao
+        
+            adc_value = ((int));
+        
+        }
+        
+        //const uint8_t total_period = 14.2857; //  14.2857 ?s         
+        
+          //X esta entre 0-1023
+          //y esta entre 2?s - 3?s
+          //formula que relaciona y = 2 + (x/1023)
+        
+        // comentarios do professor
+        //periodo = 1000
+        //ton = (periodo*adc_read())>>10
+        //toff = periodo - ton
+
+       /* uint8_t on_time = 2 + ((uint16_t)adc_value / 1023);
+        uint8_t off_time = total_period - on_time;
+
+        LATCbits.LATC4 = 1;
+        __delay_us(on_time);
+
+        LATCbits.LATC4 = 0;
+        __delay_ms(off_time);
+        */
+//    }
+
+//}
+
+
+
