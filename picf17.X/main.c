@@ -201,8 +201,16 @@ void main(void) {
     }
 }
 
+*/
 
 
+
+
+
+
+
+
+//testar isso:
 //arrumar isso:
 
 #pragma config FOSC = INTOSC    // Oscilador interno
@@ -232,60 +240,61 @@ void main(void) {
 #define _XTAL_FREQ 16000000UL   // Oscilador interno com PLL ativado (16 MHz)
 
 int adc_value = 0; //  0?1023
-
+int periodo = 1000;
+int ton = 0;
+int toff = 0;
 
 
 void main(void) {
-    //TRISCbits.TRISC4 = 0;  // RC4 como saída
-    //LATCbits.LATC4 = 0;
-
+    TRISCbits.TRISC4 = 0;  // RC4 como saída
+    LATCbits.LATC4 = 0;
     
-    TRISA = 0b11111111; //definindo o pino a0 como entrada
+    TRISA = 0xFF; //definindo o pino a0 como entrada
     
     ADCON0bits.CHS = 0b0000; //canal AN0 
     ADCON0bits.ADON = 1; // ativar o conversor ADC
     
-    ADCON1bits.ADNREF = 000 //configurando tensao de referencia
-    ADCON1.ADFM = 1;       //bit mais significativo na direita 
-    ADCON1.ADCS = 0b010 // ADC Conversion Clock Select bits FOSC/32
+    ADCON1bits.ADNREF = 0; //configurando tensao de referencia
+    ADCON1bits.ADFM = 1;       //bit mais significativo na direita 
+    ADCON1bits.ADCS = 0b010; // ADC Conversion Clock Select bits FOSC/32
     
-            //ver esses links
-            //https://youtu.be/Zx-p7BscHK8?feature=shared
-            //https://www.youtube.com/playlist?list=PLW6De-P8jCuh5aK5ybeJuZHn6_gc9oLhH
-            //https://www.youtube.com/playlist?list=PLW6De-P8jCuh5aK5ybeJuZHn6_gc9oLhH
-    while(1) {
+    ANSELAbits.ANSA0 = 1; // Ativa função analógica do RA0
+    
+    CM1CON0bits.C1ON = 0;  // Desliga comparador 1  
+    CM2CON0bits.C2ON = 0;  // Desliga comparador 2 (se presente)
+
+
+    
+
+    while(1){
         
         ADCON0bits.GO = 1; //entra em conversao
         
         while(ADCON0bits.GO){ //aguarda processo de conversao
         
-            adc_value = ((int));
+            adc_value = (((int) ADRESH)<<8) | ADRESL;
         
         }
         
-        //const uint8_t total_period = 14.2857; //  14.2857 ?s         
-        
-          //X esta entre 0-1023
-          //y esta entre 2?s - 3?s
-          //formula que relaciona y = 2 + (x/1023)
-        
         // comentarios do professor
         //periodo = 1000
+        
         //ton = (periodo*adc_read())>>10
         //toff = periodo - ton
-
-       /* uint8_t on_time = 2 + ((uint16_t)adc_value / 1023);
-        uint8_t off_time = total_period - on_time;
-
+        
+        ton = (periodo*adc_value)>>10;
+        toff = periodo - ton;
+        
         LATCbits.LATC4 = 1;
-        __delay_us(on_time);
+        __delay_us(ton);
 
         LATCbits.LATC4 = 0;
-        __delay_ms(off_time);
-        */
-//    }
+        __delay_us(toff);
+        
+    }
+}
 
-//}
+
 
 
 
