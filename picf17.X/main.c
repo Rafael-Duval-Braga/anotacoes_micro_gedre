@@ -213,84 +213,89 @@ void main(void) {
 //testar isso:
 //arrumar isso:
 
-#pragma config FOSC = INTOSC    // Oscilador interno
-#pragma config WDTE = OFF       // Watchdog Timer desativado
-#pragma config PWRTE = ON       // Power-up Timer habilitado
-#pragma config MCLRE = ON       // MCLR habilitado (necessário para ICSP)
-#pragma config CP = OFF         // Proteção de código desabilitada
-#pragma config BOREN = OFF      // Brown-out Reset desativado
-#pragma config CLKOUTEN = OFF   // CLKOUT desabilitado
-#pragma config IESO = ON        // Troca automática entre osciladores
-#pragma config FCMEN = ON       // Fail-safe clock monitor
+#pragma config FOSC = INTOSC
+#pragma config WDTE = OFF
+#pragma config PWRTE = ON
+#pragma config MCLRE = ON
+#pragma config CP = OFF
+#pragma config BOREN = OFF
+#pragma config CLKOUTEN = OFF
+#pragma config IESO = ON
+#pragma config FCMEN = ON
 
 // CONFIG2
 #pragma config WRT = OFF
 #pragma config PPS1WAY = ON
 #pragma config ZCD = OFF
-#pragma config PLLEN = ON       // PLL ativado (pode ou não estar efetivamente atuando)
+#pragma config PLLEN = ON
 #pragma config STVREN = ON
 #pragma config BORV = LO
 #pragma config LPBOR = OFF
 #pragma config DEBUG = OFF
-#pragma config LVP = OFF        // Programação por alta tensão (MCLR habilitado)    
+#pragma config LVP = OFF
 
 #include <xc.h>
 #include <stdint.h>
 
-#define _XTAL_FREQ 16000000UL   // Oscilador interno com PLL ativado (16 MHz)
+#define _XTAL_FREQ 16000000UL
 
-int adc_value = 0; //  0?1023
+unsigned int adc_value = 0;
 int periodo = 1000;
 int ton = 0;
 int toff = 0;
 
 
+// Função de delay variável em ms
+void delay_us_var(unsigned int us) {
+    while (us--) {
+        __delay_us(1); //contador que espera 1 microssegundo, com isso crio
+                       //a instrucao delay para usar com variavel
+    }
+}
+
+
 void main(void) {
-    TRISCbits.TRISC4 = 0;  // RC4 como saída
+    // Oscilador interno
+    OSCCONbits.IRCF = 0b1111;
+
+    TRISCbits.TRISC4 = 0;
     LATCbits.LATC4 = 0;
-    
-    TRISA = 0xFF; //definindo o pino a0 como entrada
-    
-    ADCON0bits.CHS = 0b0000; //canal AN0 
-    ADCON0bits.ADON = 1; // ativar o conversor ADC
-    
-    ADCON1bits.ADNREF = 0; //configurando tensao de referencia
-    ADCON1bits.ADFM = 1;       //bit mais significativo na direita 
-    ADCON1bits.ADCS = 0b010; // ADC Conversion Clock Select bits FOSC/32
-    
-    ANSELAbits.ANSA0 = 1; // Ativa função analógica do RA0
-    
-    CM1CON0bits.C1ON = 0;  // Desliga comparador 1  
-    CM2CON0bits.C2ON = 0;  // Desliga comparador 2 (se presente)
 
+    TRISA = 0xFF; // RA0 como entrada
+    ANSELAbits.ANSA0 = 1;
 
-    
+    // ADC
+    ADCON0bits.CHS = 0b0000; // AN0
+    ADCON0bits.ADON = 1;
+    ADCON1bits.ADNREF = 0;
+    ADCON1bits.ADPREF = 0b00;
+    ADCON1bits.ADFM = 1;
+    ADCON1bits.ADCS = 0b010;
+
+    // Desativa comparadores
+    CM1CON0bits.C1ON = 0;
+    CM2CON0bits.C2ON = 0;
 
     while(1){
+        ADCON0bits.GO = 1;
+        while(ADCON0bits.GO); // Espera conversão
         
-        ADCON0bits.GO = 1; //entra em conversao
-        
-        while(ADCON0bits.GO){ //aguarda processo de conversao
-        
-            adc_value = (((int) ADRESH)<<8) | ADRESL;
-        
-        }
-        
+        adc_value = (((unsigned int) ADRESH) << 8) | ADRESL;
+
         // comentarios do professor
         //periodo = 1000
         
         //ton = (periodo*adc_read())>>10
         //toff = periodo - ton
         
-        ton = (periodo*adc_value)>>10;
+        ton = (periodo * adc_value) >> 10;
         toff = periodo - ton;
-        
+
         LATCbits.LATC4 = 1;
-        __delay_us(ton);
+        delay_us_var(ton);
 
         LATCbits.LATC4 = 0;
-        __delay_us(toff);
-        
+        delay_us_var(toff);
     }
 }
 
