@@ -306,9 +306,3 @@ void main(void) {
         delay_us_var(toff);
     }
 }
-
-
-
-
-
-
