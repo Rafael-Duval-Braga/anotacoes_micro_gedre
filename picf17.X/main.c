@@ -211,7 +211,29 @@ void main(void) {
 
 
 //testar isso:
-//arrumar isso:
+
+
+// CONFIG1
+#pragma config FOSC = INTOSC
+#pragma config WDTE = OFF
+#pragma config PWRTE = ON
+#pragma config MCLRE = ON
+#pragma config CP = OFF
+#pragma config BOREN = OFF
+#pragma config CLKOUTEN = OFF
+#pragma config IESO = ON
+#pragma config FCMEN = ON
+
+// CONFIG2
+#pragma config WRT = OFF
+#pragma config PPS1WAY = ON
+#pragma config ZCD = OFF
+#pragma config PLLEN = ON
+#pragma config STVREN = ON
+#pragma config BORV = LO
+#pragma config LPBOR = OFF
+#pragma config DEBUG = OFF
+#pragma config LVP = OFF
 
 #include <xc.h>
 #include <stdint.h>
