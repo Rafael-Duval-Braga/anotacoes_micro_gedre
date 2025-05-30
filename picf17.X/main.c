@@ -213,84 +213,70 @@ void main(void) {
 //testar isso:
 //arrumar isso:
 
-#pragma config FOSC = INTOSC
-#pragma config WDTE = OFF
-#pragma config PWRTE = ON
-#pragma config MCLRE = ON
-#pragma config CP = OFF
-#pragma config BOREN = OFF
-#pragma config CLKOUTEN = OFF
-#pragma config IESO = ON
-#pragma config FCMEN = ON
-
-// CONFIG2
-#pragma config WRT = OFF
-#pragma config PPS1WAY = ON
-#pragma config ZCD = OFF
-#pragma config PLLEN = ON
-#pragma config STVREN = ON
-#pragma config BORV = LO
-#pragma config LPBOR = OFF
-#pragma config DEBUG = OFF
-#pragma config LVP = OFF
-
 #include <xc.h>
 #include <stdint.h>
 
 #define _XTAL_FREQ 16000000UL
 
 unsigned int adc_value = 0;
-int periodo = 1000;
-int ton = 0;
-int toff = 0;
+unsigned int periodo = 1000;
+unsigned int ton = 0;
+unsigned int toff = 0;
 
-
-// Função de delay variável em ms
 void delay_us_var(unsigned int us) {
     while (us--) {
-        __delay_us(1); //contador que espera 1 microssegundo, com isso crio
-                       //a instrucao delay para usar com variavel
+        __delay_us(1);
     }
 }
 
-
 void main(void) {
-    // Oscilador interno
+    // Configuração do oscilador interno
     OSCCONbits.IRCF = 0b1111;
 
+    // Configura RC4 como saída digital
     TRISCbits.TRISC4 = 0;
     LATCbits.LATC4 = 0;
 
-    TRISA = 0xFF; // RA0 como entrada
+    // Configura RA0 como entrada analógica
+    TRISA = 0xFF;
     ANSELAbits.ANSA0 = 1;
 
-    // ADC
+    // Configura ADC
     ADCON0bits.CHS = 0b0000; // AN0
     ADCON0bits.ADON = 1;
     ADCON1bits.ADNREF = 0;
     ADCON1bits.ADPREF = 0b00;
-    ADCON1bits.ADFM = 1;
-    ADCON1bits.ADCS = 0b010;
+    ADCON1bits.ADFM = 1;     // Justificado à direita
+    ADCON1bits.ADCS = 0b010; // FOSC/32
 
     // Desativa comparadores
     CM1CON0bits.C1ON = 0;
     CM2CON0bits.C2ON = 0;
 
-    while(1){
+    while (1) {
+        // Inicia conversão ADC
         ADCON0bits.GO = 1;
-        while(ADCON0bits.GO); // Espera conversão
-        
-        adc_value = (((unsigned int) ADRESH) << 8) | ADRESL;
+        while (ADCON0bits.GO); // Espera a conversão terminar
 
-        // comentarios do professor
+        // Lê valor de 10 bits do ADC
+        adc_value = (((unsigned int)ADRESH) << 8) | ADRESL;
+
+        // Calcula o 'ton' corretamente sem perda de bits
+        unsigned long temp = (unsigned long)periodo * adc_value; // 32 bits
+        
+                // comentarios do professor
         //periodo = 1000
         
         //ton = (periodo*adc_read())>>10
         //toff = periodo - ton
         
-        ton = (periodo * adc_value) >> 10;
+        //ton = (periodo * adc_value) >> 10;
+                
+        ton = temp >> 10; // Divide por 1024 (valor máximo do ADC de 10 bits)
+
         toff = periodo - ton;
 
+        // Gera pulso
         LATCbits.LATC4 = 1;
         delay_us_var(ton);
 
@@ -298,6 +284,7 @@ void main(void) {
         delay_us_var(toff);
     }
 }
+
 
 
 
