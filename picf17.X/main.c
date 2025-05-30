@@ -210,7 +210,7 @@ void main(void) {
 
 
 
-//testar isso:
+//testar isso: Resultado satisfatorio
 
 
 // CONFIG1
@@ -241,7 +241,7 @@ void main(void) {
 #define _XTAL_FREQ 16000000UL
 
 unsigned int adc_value = 0;
-unsigned int periodo = 1000;
+unsigned int periodo = 1000;    //valor proximo com 15 
 unsigned int ton = 0;
 unsigned int toff = 0;
 
