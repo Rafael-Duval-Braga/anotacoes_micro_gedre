@@ -61,8 +61,8 @@ void main(void) {
 
 
 //Código com o tempo variado com potenciometro
+//testar funcao void delay_us_var(unsigned int us)
 
-//testar isso: Resultado satisfatorio
 // CONFIG1
 #pragma config FOSC = INTOSC
 #pragma config WDTE = OFF
@@ -91,15 +91,30 @@ void main(void) {
 #define _XTAL_FREQ 16000000UL
 
 unsigned int adc_value = 0;
-unsigned int periodo = 1000;    //valor proximo com 15 
+unsigned int periodo = 1000;
 unsigned int ton = 0;
 unsigned int toff = 0;
 
-void delay_us_var(unsigned int us) {
+/*
+void delay_us_var(unsigned int us) 
+{
     while (us--) {
         __delay_us(1);
     }
 }
+*/
+
+
+void delay_us_var(unsigned int us)
+{
+    for (; us > 0; us--)
+    {
+        __delay_ms(1);
+    }
+}
+ 
+ 
+
 
 void main(void) {
     // Configuração do oscilador interno
@@ -156,3 +171,4 @@ void main(void) {
         delay_us_var(toff);
     }
 }
+
