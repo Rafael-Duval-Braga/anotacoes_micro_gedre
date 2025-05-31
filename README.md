@@ -99,12 +99,12 @@ na parte da conecção com o debugger aparece o esquematico, acho que é o da pg
          <https://www.youtube.com/playlist?list=PLW6De-P8jCuh5aK5ybeJuZHn6_gc9oLhH>
          <https://www.youtube.com/playlist?list=PLW6De-P8jCuh5aK5ybeJuZHn6_gc9oLhH>
   
-- [ ] implementar a logica do professor e testa-la:
+- [x] implementar a logica do professor e testa-la:
 -  // comentarios do professor
 -  //periodo = 1000
 -  //ton = (periodo*adc_read())>>10
 -  //toff = periodo - ton
-
+- Resultados ligeiramente satisfatorios, presisa-se analisar melhor a função void delay_us_var(unsigned int us)
 
 
 
