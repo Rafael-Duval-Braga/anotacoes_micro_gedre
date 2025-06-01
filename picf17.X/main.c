@@ -248,7 +248,8 @@ void main(void) {
 
     while (1) {
         // Leitura do potenciômetro
-        __delay_us(5);         // Tempo de aquisição
+        //__delay_us(5);         // Tempo de aquisição
+        
         ADCON0bits.GO = 1;
         while (ADCON0bits.GO);
 
