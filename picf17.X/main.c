@@ -172,3 +172,102 @@ void main(void) {
     }
 }
 
+
+//codigo com pwm: conferir
+
+//codigo do com adicao de pwm
+
+// CONFIG1
+#pragma config FOSC = INTOSC
+#pragma config WDTE = OFF
+#pragma config PWRTE = ON
+#pragma config MCLRE = ON
+#pragma config CP = OFF
+#pragma config BOREN = OFF
+#pragma config CLKOUTEN = OFF
+#pragma config IESO = ON
+#pragma config FCMEN = ON
+
+// CONFIG2
+#pragma config WRT = OFF
+#pragma config PPS1WAY = ON
+#pragma config ZCD = OFF
+#pragma config PLLEN = ON
+#pragma config STVREN = ON
+#pragma config BORV = LO
+#pragma config LPBOR = OFF
+#pragma config DEBUG = OFF
+#pragma config LVP = OFF
+
+#include <xc.h>
+#include <stdint.h>
+
+#define _XTAL_FREQ 16000000UL
+
+void main(void) {
+    unsigned int adc_value = 0;
+    unsigned int duty = 0;
+
+    // Configura o oscilador interno para 16 MHz
+    OSCCONbits.IRCF = 0b1111;
+
+    // Configura RA0 como entrada analógica (potenciômetro)
+    TRISAbits.TRISA0 = 1;
+    ANSELAbits.ANSA0 = 1;
+
+    // Configura ADC
+    ADCON0bits.CHS = 0b0000;   // Canal AN0
+    ADCON0bits.ADON = 1;       // Liga o ADC
+    ADCON1bits.ADFM = 1;       // Resultado justificado à direita
+    ADCON1bits.ADPREF = 0b00;  // Referência = VDD
+    ADCON1bits.ADCS = 0b010;   // Clock ADC = FOSC/32
+    ANSELA = 0x01;
+    
+    // Desativa comparadores
+    CM1CON0bits.C1ON = 0;
+    CM2CON0bits.C2ON = 0;
+
+    // PWM no pino RC4 (CCP1)
+    TRISCbits.TRISC4 = 1;      // Temporariamente como entrada
+    RC4PPS = 0x09;             // CCP1 no RC4
+
+    // Calcula T2PR para obter período de 1 ms (1 kHz PWM)
+    T2PR = 249;  // 1 ms → 4 * Tosc * prescaler * (T2PR + 1) = 1ms
+
+    // Configura CCP1 como PWM
+    CCP1CONbits.CCP1MODE = 0b1100; // PWM mode
+    CCP1CONbits.FMT = 0;          // Left-aligned 10-bit format
+
+    // Seleciona Timer2 para CCP1
+    CCPTMRSbits.C1TSEL = 0b00;    // CCP1 usa Timer2
+
+    // Configura Timer2
+    T2CLKCON = 0x01;              // Clock = Fosc/4
+    T2CONbits.T2CKPS = 0b11;      // Prescaler = 1:16
+    T2CONbits.TMR2ON = 1;         // Liga Timer2
+
+    while (!PIR1bits.TMR2IF);     // Espera Timer2 iniciar
+    PIR1bits.TMR2IF = 0;
+    TRISCbits.TRISC4 = 0;         // Agora RC4 é saída PWM
+
+    while (1) {
+        // Inicia conversão ADC com pequeno delay
+        __delay_us(5); // Tempo de aquisição
+        ADCON0bits.GO = 1;
+        while (ADCON0bits.GO);
+
+        // Lê valor ADC
+        adc_value = ((ADRESH << 8) | ADRESL);
+
+        // Saturação (opcional)
+        if (adc_value > 1022) adc_value = 1022;
+
+        // Atualiza duty
+        duty = adc_value;
+
+        // Carrega nos registradores CCP
+        CCPR1H = duty >> 2;                  // Bits 9:2
+        CCPR1L = (duty & 0b11) << 6;         // Bits 1:0 nos bits 7:6
+    }
+}
+
