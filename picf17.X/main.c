@@ -109,7 +109,7 @@ void delay_us_var(unsigned int us)
 {
     for (; us > 0; us--)
     {
-        __delay_ms(1);
+        __delay_us(1);
     }
 }
  
