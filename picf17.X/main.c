@@ -177,6 +177,7 @@ void main(void) {
 
 //codigo com pwm: conferir
 // CONFIG1
+//codigo com pwm: conferir
 #pragma config FOSC = INTOSC
 #pragma config WDTE = OFF
 #pragma config PWRTE = ON
@@ -202,63 +203,37 @@ void main(void) {
 #include <stdint.h>
 
 #define _XTAL_FREQ 16000000UL
+#define PRESCALAR 16
+#define cycle_ratio 120
+
 
 void main(void) {
-    unsigned int adc_value = 0;
-    unsigned int duty = 0;
-
-    // Oscilador interno para 16 MHz
-    OSCCONbits.IRCF = 0b1111;
-
-    // Configura RA0 como entrada analógica (potenciómetro)
-    TRISAbits.TRISA0 = 1;
-    ANSELAbits.ANSA0 = 1;
-    ANSELA = 0x01;
-
-    // Configuração do ADC
-    ADCON0bits.CHS = 0b0000;   // AN0
-    ADCON0bits.ADON = 1;
-    ADCON1bits.ADFM = 1;       // Justificação à direita
-    ADCON1bits.ADPREF = 0b00;
-    ADCON1bits.ADCS = 0b010;
-
-    // Desativa comparadores
-    CM1CON0bits.C1ON = 0;
-    CM2CON0bits.C2ON = 0;
-
-    // PWM em RC4 via CCP1
-    TRISCbits.TRISC4 = 1;
-    RC4PPS = 0x09;             // CCP1 -> RC4
-
-    // Ajuste para período PWM de 1 µs
-    T2PR = 3;                  // T2PR + 1 = 4 → 4*Tosc*Prescaler = 1 µs
-    CCPTMRSbits.C1TSEL = 0b00; // CCP1 usa Timer2
-    T2CLKCON = 0x01;           // Clock = Fosc/4
-    T2CONbits.T2CKPS = 0b00;   // Prescaler = 1
-    T2CONbits.TMR2ON = 1;
-
-    // CCP1 em modo PWM
-    CCP1CONbits.CCP1MODE = 0b1100;
-    CCP1CONbits.FMT = 0;       // Formato justificado
-    CCP1CONbits.EN = 1;
-
-    while (!PIR1bits.TMR2IF);  // Espera Timer2 ativar
-    PIR1bits.TMR2IF = 0;
-    TRISCbits.TRISC4 = 0;      // RC4 como saída
-
-    while (1) {
-        // Leitura do potenciômetro
-        //__delay_us(5);         // Tempo de aquisição
-        
-        ADCON0bits.GO = 1;
-        while (ADCON0bits.GO);
-
-        adc_value = ((ADRESH << 8) | ADRESL);
-        if (adc_value > 1022) adc_value = 1022;
-
-        // Atualiza PWM duty cycle
-        duty = adc_value;
-        CCPR1H = duty >> 2;
-        CCPR1L = (duty & 0b11) << 6;
+    //passo 1
+    TRISCbits.TRISC5 = 1;
+    
+    //passo 2
+    CCPTMRSbits.C1TSEL = 0b00;
+    
+    //passo 3
+    T2PR = 0x65;
+    T2CONbits.CKPS = 0b1000;
+    
+    
+    //passo 4
+    CCP1CONbits.MODE = 0b1100;
+    CCP1CONbits.FMT = 0;
+    
+    //passo 5
+    CCPR1L = cycle_ratio;
+    
+    
+    //passo 6   
+    T2CONbits.ON = 1;
+    
+    //passo 7 
+    TRISCbits.TRISC5 = 0;
+    
+    while(1){
     }
-}
+
+} 
