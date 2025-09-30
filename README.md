@@ -1,4 +1,8 @@
 # micro gedre
+
+- abixo estão alguns rascunhos que fiz para um projeto do laboratorio GEDRE sobre meu processo para programar o PIC16F1769-I/SS
+
+
 O que fazer:
 
 ## 1° Ler o datasheet do 579-PIC16F1769-I/SS
